@@ -80,4 +80,14 @@ struct ModelConfig {
     ParameterBlob   params;
 };
 
+
+struct TorchDemoResult {
+    std::vector<Real> data;  // row-major [rows * cols]
+    std::size_t rows{0};
+    std::size_t cols{0};
+};
+
+TorchDemoResult torch_demo();
+
+
 } // namespace KronosXPredict

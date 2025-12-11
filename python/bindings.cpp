@@ -110,4 +110,15 @@ PYBIND11_MODULE(kronospredict, m) {
         },
         py::arg("plugin_path"),
         py::arg("config"));
+
+    m.def("torch_demo", []() {
+        auto r = KronosXPredict::torch_demo();
+        return py::array_t<KronosXPredict::Real>(
+            {static_cast<py::ssize_t>(r.rows),
+             static_cast<py::ssize_t>(r.cols)},
+            {static_cast<py::ssize_t>(r.cols * sizeof(KronosXPredict::Real)),
+             static_cast<py::ssize_t>(sizeof(KronosXPredict::Real))},
+            r.data.data()
+        );
+    });
 }

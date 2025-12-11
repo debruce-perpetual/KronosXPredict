@@ -30,10 +30,23 @@ target_link_libraries(test_plugin_loader
         GTest::gtest_main
 )
 
+add_executable(test_torch_demo
+    test_torch_demo.cpp
+)
+
+target_link_libraries(test_torch_demo
+    PRIVATE
+        KronosXPredict
+        GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(test_stub_model
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 gtest_discover_tests(test_plugin_loader
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+gtest_discover_tests(test_torch_demo
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )

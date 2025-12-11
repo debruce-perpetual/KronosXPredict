@@ -11,9 +11,13 @@ option(KRONOSPREDICT_BUILD_TESTS  "Build unit tests" ON)
 # Dependencies
 find_package(nlohmann_json CONFIG REQUIRED)
 
+find_package(Torch REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
+
 add_library(KronosXPredict SHARED
     src/runtime.cpp
     src/plugin_loader.cpp
+    src/torch_demo.cpp
 )
 
 target_include_directories(KronosXPredict
@@ -25,6 +29,7 @@ target_include_directories(KronosXPredict
 target_link_libraries(KronosXPredict
     PUBLIC
         nlohmann_json::nlohmann_json
+        ${TORCH_LIBRARIES}
 )
 
 # Install & export
@@ -53,6 +58,9 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/KronosXPredictConfig.cmake
     DESTINATION lib/cmake/KronosXPredict
 )
+
+add_executable(torch_demo_main apps/torch_demo_main.cpp)
+target_link_libraries(torch_demo_main PRIVATE KronosXPredict)
 
 if(KRONOSPREDICT_BUILD_PYTHON)
     add_subdirectory(python)

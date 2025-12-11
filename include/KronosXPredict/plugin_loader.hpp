@@ -1,11 +1,11 @@
 #pragma once
 
-#include "KronosPredict/plugin.hpp"
+#include "KronosXPredict/plugin.hpp"
 #include <memory>
 #include <string>
 #include <stdexcept>
 
-namespace KronosPredict {
+namespace KronosXPredict {
 
 class PluginError : public std::runtime_error {
 public:
@@ -54,4 +54,4 @@ private:
 
 std::shared_ptr<PluginLibrary> load_plugin_library(const std::string& path);
 
-} // namespace KronosPredict
+} // namespace KronosXPredict

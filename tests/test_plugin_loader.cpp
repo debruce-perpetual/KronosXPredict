@@ -1,18 +1,18 @@
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
-#include "KronosPredict/plugin_loader.hpp"
-#include "KronosPredict/api.hpp"
+#include "KronosXPredict/plugin_loader.hpp"
+#include "KronosXPredict/api.hpp"
 
 using json = nlohmann::json;
-using namespace KronosPredict;
+using namespace KronosXPredict;
 
 TEST(PluginLoaderTest, LoadStubAndPredict) {
     // Plugin library relative to the top-level build directory
-    std::string plugin_path = "plugins/stub/libKronosPredict_stub.so";
+    std::string plugin_path = "plugins/stub/libKronosXPredict_stub.so";
 #if defined(_WIN32)
-    plugin_path = "plugins/stub/KronosPredict_stub.dll";
+    plugin_path = "plugins/stub/KronosXPredict_stub.dll";
 #elif defined(__APPLE__)
-    plugin_path = "plugins/stub/libKronosPredict_stub.dylib";
+    plugin_path = "plugins/stub/libKronosXPredict_stub.dylib";
 #endif
 
     auto lib = load_plugin_library(plugin_path);

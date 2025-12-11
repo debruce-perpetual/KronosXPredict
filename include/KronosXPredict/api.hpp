@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace KronosPredict {
+namespace KronosXPredict {
 
 using Real      = double;
 using Clock     = std::chrono::steady_clock;
@@ -80,4 +80,4 @@ struct ModelConfig {
     ParameterBlob   params;
 };
 
-} // namespace KronosPredict
+} // namespace KronosXPredict

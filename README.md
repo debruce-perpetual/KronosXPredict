@@ -1,7 +1,7 @@
 
-# KronosPredict
+# KronosXPredict
 
-KronosPredict is a C++20 library for **real-time financial market prediction** with a **plugin-based architecture** and **Python bindings**.
+KronosXPredict is a C++20 library for **real-time financial market prediction** with a **plugin-based architecture** and **Python bindings**.
 
 The core library defines a generic, runtime-selectable API for:
 
@@ -10,7 +10,7 @@ The core library defines a generic, runtime-selectable API for:
 - Model configuration via `nlohmann::json`
 - Dynamic loading of concrete implementations (e.g. VARX, state-space MLE, nonlinear/Torch models) as shared libraries
 
-This repository currently ships with a **stub plugin** (`KronosPredict_stub`) used to exercise the API and tests. Real models can be implemented as additional plugins later.
+This repository currently ships with a **stub plugin** (`KronosXPredict_stub`) used to exercise the API and tests. Real models can be implemented as additional plugins later.
 
 ---
 
@@ -130,15 +130,15 @@ cmake --install . --prefix /your/install/prefix
 
 This installs:
 
-- `libKronosPredict.so` (or `.dylib` / `.dll`)
-- Public headers under `include/KronosPredict`
-- CMake config/targets under `lib/cmake/KronosPredict`
+- `libKronosXPredict.so` (or `.dylib` / `.dll`)
+- Public headers under `include/KronosXPredict`
+- CMake config/targets under `lib/cmake/KronosXPredict`
 
 Downstream CMake projects can then do:
 
 ```cmake
-find_package(KronosPredict CONFIG REQUIRED)
-target_link_libraries(my_target PRIVATE KronosPredict::KronosPredict)
+find_package(KronosXPredict CONFIG REQUIRED)
+target_link_libraries(my_target PRIVATE KronosXPredict::KronosXPredict)
 ```
 
 ---
@@ -175,7 +175,7 @@ import numpy as np
 import datetime
 
 # Path to the stub plugin relative to the build dir
-plugin_path = "plugins/stub/libKronosPredict_stub.so"  # .dylib / .dll on macOS/Windows
+plugin_path = "plugins/stub/libKronosXPredict_stub.so"  # .dylib / .dll on macOS/Windows
 
 config = {"warmup_count": 2}
 model = kp.load_model(plugin_path, config)
@@ -196,7 +196,7 @@ if model.ready:
 If you prefer to run from outside the build directory, add `build` to `PYTHONPATH`, e.g.:
 
 ```bash
-export PYTHONPATH=/path/to/KronosPredict/build:${PYTHONPATH}
+export PYTHONPATH=/path/to/KronosXPredict/build:${PYTHONPATH}
 python -c "import kronospredict; print(kronospredict)"
 ```
 
@@ -207,12 +207,12 @@ python -c "import kronospredict; print(kronospredict)"
 At a high level:
 
 ```text
-KronosPredict/
+KronosXPredict/
   CMakeLists.txt
   cmake/
-    KronosPredictConfig.cmake.in
+    KronosXPredictConfig.cmake.in
   include/
-    KronosPredict/
+    KronosXPredict/
       api.hpp
       runtime.hpp
       training.hpp

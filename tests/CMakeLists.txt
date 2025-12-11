@@ -14,8 +14,8 @@ add_executable(test_stub_model
 
 target_link_libraries(test_stub_model
     PRIVATE
-        KronosPredict
-        KronosPredict_stub
+        KronosXPredict
+        KronosXPredict_stub
         GTest::gtest_main
 )
 
@@ -25,8 +25,8 @@ add_executable(test_plugin_loader
 
 target_link_libraries(test_plugin_loader
     PRIVATE
-        KronosPredict
-        KronosPredict_stub
+        KronosXPredict
+        KronosXPredict_stub
         GTest::gtest_main
 )
 

@@ -5,14 +5,14 @@
 
 #include <nlohmann/json.hpp>
 
-#include "KronosPredict/api.hpp"
-#include "KronosPredict/runtime.hpp"
-#include "KronosPredict/plugin_loader.hpp"
+#include "KronosXPredict/api.hpp"
+#include "KronosXPredict/runtime.hpp"
+#include "KronosXPredict/plugin_loader.hpp"
 
 namespace py = pybind11;
 using json = nlohmann::json;
 
-namespace KronosPredict {
+namespace KronosXPredict {
 
 class PyRealtimeWrapper {
 public:
@@ -69,10 +69,10 @@ private:
     std::unique_ptr<IRealtimeModel, RealtimeDestroyFn> model_;
 };
 
-} // namespace KronosPredict
+} // namespace KronosXPredict
 
 PYBIND11_MODULE(kronospredict, m) {
-    using namespace KronosPredict;
+    using namespace KronosXPredict;
 
     py::enum_<TargetKind>(m, "TargetKind")
         .value("Price", TargetKind::Price)

@@ -1,26 +1,26 @@
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
-#include "KronosPredict/runtime.hpp"
-#include "KronosPredict/api.hpp"
-#include "KronosPredict/plugin.hpp"
+#include "KronosXPredict/runtime.hpp"
+#include "KronosXPredict/api.hpp"
+#include "KronosXPredict/plugin.hpp"
 
 using json = nlohmann::json;
-using namespace KronosPredict;
+using namespace KronosXPredict;
 
 extern "C" IRealtimeModel*
-KronosPredict_create_realtime_model(const nlohmann::json& config);
+KronosXPredict_create_realtime_model(const nlohmann::json& config);
 
 extern "C" void
-KronosPredict_destroy_realtime_model(IRealtimeModel* ptr);
+KronosXPredict_destroy_realtime_model(IRealtimeModel* ptr);
 
 TEST(StubModelTest, BasicEchoBehavior) {
     json cfg;
     cfg["warmup_count"] = 2;
 
-    IRealtimeModel* raw = KronosPredict_create_realtime_model(cfg);
+    IRealtimeModel* raw = KronosXPredict_create_realtime_model(cfg);
     ASSERT_NE(raw, nullptr);
 
-    std::unique_ptr<IRealtimeModel, RealtimeDestroyFn> model(raw, KronosPredict_destroy_realtime_model);
+    std::unique_ptr<IRealtimeModel, RealtimeDestroyFn> model(raw, KronosXPredict_destroy_realtime_model);
 
     std::vector<Real> e1{1.0, 2.0, 3.0};
     std::vector<Real> x1{};

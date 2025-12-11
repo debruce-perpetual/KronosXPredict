@@ -1,9 +1,9 @@
 #include <nlohmann/json.hpp>
-#include "KronosPredict/runtime.hpp"
-#include "KronosPredict/training.hpp"
-#include "KronosPredict/plugin.hpp"
+#include "KronosXPredict/runtime.hpp"
+#include "KronosXPredict/training.hpp"
+#include "KronosXPredict/plugin.hpp"
 
-namespace KronosPredict {
+namespace KronosXPredict {
 
 class StubRealtimeModel : public IRealtimeModel {
 public:
@@ -85,24 +85,24 @@ private:
     TrainingMetrics metrics_;
 };
 
-} // namespace KronosPredict
+} // namespace KronosXPredict
 
-extern "C" KronosPredict::IRealtimeModel*
-KronosPredict_create_realtime_model(const nlohmann::json& config) {
-    return new KronosPredict::StubRealtimeModel(config);
+extern "C" KronosXPredict::IRealtimeModel*
+KronosXPredict_create_realtime_model(const nlohmann::json& config) {
+    return new KronosXPredict::StubRealtimeModel(config);
 }
 
 extern "C" void
-KronosPredict_destroy_realtime_model(KronosPredict::IRealtimeModel* ptr) {
+KronosXPredict_destroy_realtime_model(KronosXPredict::IRealtimeModel* ptr) {
     delete ptr;
 }
 
-extern "C" KronosPredict::IModelTrainer*
-KronosPredict_create_trainer(const nlohmann::json& config) {
-    return new KronosPredict::StubTrainer(config);
+extern "C" KronosXPredict::IModelTrainer*
+KronosXPredict_create_trainer(const nlohmann::json& config) {
+    return new KronosXPredict::StubTrainer(config);
 }
 
 extern "C" void
-KronosPredict_destroy_trainer(KronosPredict::IModelTrainer* ptr) {
+KronosXPredict_destroy_trainer(KronosXPredict::IModelTrainer* ptr) {
     delete ptr;
 }

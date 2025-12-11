@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(KronosPredict LANGUAGES CXX)
+project(KronosXPredict LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -11,25 +11,25 @@ option(KRONOSPREDICT_BUILD_TESTS  "Build unit tests" ON)
 # Dependencies
 find_package(nlohmann_json CONFIG REQUIRED)
 
-add_library(KronosPredict SHARED
+add_library(KronosXPredict SHARED
     src/runtime.cpp
     src/plugin_loader.cpp
 )
 
-target_include_directories(KronosPredict
+target_include_directories(KronosXPredict
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(KronosPredict
+target_link_libraries(KronosXPredict
     PUBLIC
         nlohmann_json::nlohmann_json
 )
 
 # Install & export
-install(TARGETS KronosPredict
-    EXPORT KronosPredictTargets
+install(TARGETS KronosXPredict
+    EXPORT KronosXPredictTargets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     RUNTIME DESTINATION bin
@@ -37,21 +37,21 @@ install(TARGETS KronosPredict
 
 install(DIRECTORY include/ DESTINATION include)
 
-install(EXPORT KronosPredictTargets
-    FILE KronosPredictTargets.cmake
-    NAMESPACE KronosPredict::
-    DESTINATION lib/cmake/KronosPredict
+install(EXPORT KronosXPredictTargets
+    FILE KronosXPredictTargets.cmake
+    NAMESPACE KronosXPredict::
+    DESTINATION lib/cmake/KronosXPredict
 )
 
 configure_file(
-    cmake/KronosPredictConfig.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/KronosPredictConfig.cmake
+    cmake/KronosXPredictConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/KronosXPredictConfig.cmake
     @ONLY
 )
 
 install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/KronosPredictConfig.cmake
-    DESTINATION lib/cmake/KronosPredict
+    ${CMAKE_CURRENT_BINARY_DIR}/KronosXPredictConfig.cmake
+    DESTINATION lib/cmake/KronosXPredict
 )
 
 if(KRONOSPREDICT_BUILD_PYTHON)

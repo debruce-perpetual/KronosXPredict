@@ -4,7 +4,7 @@ pybind11_add_module(kronospredict bindings.cpp)
 
 target_link_libraries(kronospredict
     PRIVATE
-        KronosPredict
+        KronosXPredict
         nlohmann_json::nlohmann_json
 )
 

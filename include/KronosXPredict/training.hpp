@@ -1,10 +1,10 @@
 #pragma once
 
-#include "KronosPredict/api.hpp"
+#include "KronosXPredict/api.hpp"
 #include <cstddef>
 #include <unordered_map>
 
-namespace KronosPredict {
+namespace KronosXPredict {
 
 struct TrainingMetrics {
     double loss           = 0.0;
@@ -34,4 +34,4 @@ public:
     virtual TrainingMetrics metrics() const = 0;
 };
 
-} // namespace KronosPredict
+} // namespace KronosXPredict

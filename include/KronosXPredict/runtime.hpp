@@ -1,8 +1,8 @@
 #pragma once
 
-#include "KronosPredict/api.hpp"
+#include "KronosXPredict/api.hpp"
 
-namespace KronosPredict {
+namespace KronosXPredict {
 
 class IRealtimeModel {
 public:
@@ -16,4 +16,4 @@ public:
     virtual ModelKind kind() const noexcept = 0;
 };
 
-} // namespace KronosPredict
+} // namespace KronosXPredict

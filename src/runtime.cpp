@@ -1,5 +1,5 @@
-#include "KronosPredict/runtime.hpp"
+#include "KronosXPredict/runtime.hpp"
 
-namespace KronosPredict {
+namespace KronosXPredict {
 // No concrete implementations here; plugins provide actual models.
-} // namespace KronosPredict
+} // namespace KronosXPredict

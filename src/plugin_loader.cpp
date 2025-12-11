@@ -1,4 +1,4 @@
-#include "KronosPredict/plugin_loader.hpp"
+#include "KronosXPredict/plugin_loader.hpp"
 #include <nlohmann/json.hpp>
 
 #if defined(_WIN32)
@@ -7,7 +7,7 @@
   #include <dlfcn.h>
 #endif
 
-namespace KronosPredict {
+namespace KronosXPredict {
 
 namespace {
 
@@ -117,7 +117,7 @@ void PluginLibrary::load_symbols() {
     }
 
     if (!rt_factory_ && !tr_factory_) {
-        throw PluginError("Plugin does not export any KronosPredict factories");
+        throw PluginError("Plugin does not export any KronosXPredict factories");
     }
 }
 
@@ -153,4 +153,4 @@ std::shared_ptr<PluginLibrary> load_plugin_library(const std::string& path) {
     return std::make_shared<PluginLibrary>(path);
 }
 
-} // namespace KronosPredict
+} // namespace KronosXPredict
